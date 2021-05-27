@@ -74,7 +74,8 @@ input.addEventListener("keydown", () => {
 
 input.addEventListener("keyup", () => {
     console.log(nickname);
-    socket.emit("stopped typing", nickname);
+    setTimeout(function() { socket.emit("stopped typing", nickname);},1000)
+   
 });
 
 // socket.on("user connected", nickname => {
@@ -153,7 +154,11 @@ socket.on("user disconnected", function(nickname) {
 });
 
 socket.on("typing", function(data) {
+    if(data.isTyping){
     $("#typing").html(data + " is typing");
+    }else{
+        $("#typing").html(data + " is typing");
+    }
 });
 
 socket.on("stopped typing", function(data) {
@@ -229,7 +234,7 @@ socket.on("all users", function(users) {
             $(document).on("submit", "#" + receiverName + "-form", function(e) {
                 e.preventDefault();
                 let input = $("#" + receiverName + "-input").val();
-                if ($(input) != "") {
+                if (input != "") {
                     socket.emit("private message", receiverName, senderName, input);
                     var item1 = document.createElement("div");
                     item1.classList.add("paraRight");
@@ -241,6 +246,8 @@ socket.on("all users", function(users) {
                         "</em></span>";
                     $("#" + receiverName + "-message-text").append(item1);
                     $("#" + receiverName + "-input").val("");
+                }else{
+
                 }
             });
         });

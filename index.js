@@ -68,7 +68,7 @@ io.on("connection", function(socket) {
 
     socket.on("typing", function(data) {
         console.log(data.nick + " is typing");
-        socket.broadcast.emit("typing", data.nick);
+        socket.broadcast.emit("typing", data.isTyping, data.nick);
     });
 
     socket.on("stopped typing", function(data) {
