@@ -78,75 +78,14 @@ input.addEventListener("keyup", () => {
    
 });
 
-// socket.on("user connected", nickname => {
-//     console.log(nickname);
-//     $("#userJoined").html(`${nickname} joined the chat!`);
-//     $(".participants")
-//         .append(`<div class="conversation active" id="  ${nickname}-user"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:greenyellow;">Active</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${nickname}&nbsp;&nbsp;&nbsp;&nbsp;<button class="title-text btn users" id="${nickname}'"><i class="fas fa-envelope"></i>PM</button></div>
-//     <div class="conversation-message" id="${nickname}-privateMessage">No message for you oi</div>
-//     <div class="card " id="${nickname}-messageBox" style="display: none;position:absolute;font-size:15px;width:45rem;height:40rem;border:solid black 2px;bottom:30px;left:40%;">
-//         <div class="container-fluid">    
-//                 <span class="pull-left receiverName" id="${nickname}-receiverName" style="width:fit-content;"></span>
-//                 <button class="btn btn-danger pull-right" id="${nickname}-exit"style="margin:5px;">X</button>
-//             </div>
-//         <div class="container" id="${nickname}-message-text" style="height:80%;width:95%;border:solid blue 1px;margin:10px;overflow-y: scroll;">
-
-//         </div>
-//         <div class="container p-1 m-1">
-//             <form id="${nickname}-form" class="form ">
-//             <button class="pull-left" style="border:none; width:fit-content;height:auto "><i class="fa fa-send-o" style="font-size:15px;margin-right:10px"
-//             alt="Send"></i>Send</button>
-//             <input id="${nickname}-input" autocomplete="off"class="form-control pull-right" style="font-size:15px;width:80%;height:auto" placeholder="Type a message" /><br>
-//         </div> 
-//     </div>
-//     `);
-
-//     $(document).on("click", "#" + nickname, function() {
-//         console.log(nickname);
-//         let receiverName = this.id;
-//         let senderName = nickname;
-
-//         $("#" + receiverName + "-messageBox").show();
-//         $("#" + receiverName + "-receiverName").html(receiverName);
-//         $("#" + receiverName + "-receiverName").css({
-//             "margin-left": "10%",
-//             "padding-left": "30px",
-//             "padding-right": "30px",
-//             "text-align": "center",
-//             "width": "fit-content",
-//             "font-weight": "bold",
-//             "font-size": "25px",
-//             "background-color": "skyblue",
-//             "border": "solid black green 2px",
-//             "border-radius": "5px"
-//         })
-//         $("#" + receiverName + "-exit").on("click", function() {
-//             $("#" + receiverName + "-messageBox").hide();
-//         });
-//         $("#" + receiverName + "-form").submit(function(e) {
-//             e.preventDefault();
-//             let input = $("#" + receiverName + "-input").val();
-//             if (input) {
-//                 socket.emit("private message", receiverName, senderName, input);
-//                 var item1 = document.createElement("div");
-//                 item1.classList.add("paraRight");
-//                 item1.innerHTML =
-//                     "<strong>You: </strong>" +
-//                     input +
-//                     "<br><span><em>" +
-//                     formattedTime +
-//                     "</em></span>";
-//                 $("#" + receiverName + "-message-text").append(item1);
-//                 $("#" + receiverName + "-input").val("");
-//             }
-//         });
-//     });
-// });
+socket.on("user connected", nickname => {
+        console.log(nickname+"joined");
+        $("#userJoined").html(`${nickname} joined the chat!`);
+})
 
 socket.on("user disconnected", function(nickname) {
     $("#userJoined").html(nickname + " left the chat!");
     $("#" + nickname + "-privateMessage").remove();
-
     $("#" + nickname + "-user").remove();
 
     // $('#'+nickname).children('.fa-user-circle-o').css("color","gray");
@@ -188,7 +127,7 @@ socket.on("all users", function(users) {
             continue;
         }
         $(".participants")
-            .append(`<div class="conversation active" id="${users[i]}-user"><i class="fa fa-user-circle-o" aria-hidden="true" style="color:greenyellow;">Active</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${users[i]}&nbsp;&nbsp;&nbsp;&nbsp;<button class="title-text btn user" id="${users[i]}"><i class="fas fa-envelope"></i>PM</button></div>
+            .append(`<div class="container-fluid divContainer"><div class="conversation active" id="${users[i]}-user"><i class="fa fa-user-circle-o" aria-hidden="true" style="z-index:1;color:greenyellow;">Active</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${users[i]}&nbsp;&nbsp;&nbsp;&nbsp;<button class="title-text btn user" id="${users[i]}"><i class="fas fa-envelope"></i>PM</button></div>
         <div class="conversation-message" id="${users[i]}-privateMessage">No message for you</div>
         <div class="card " id="${users[i]}-messageBox" style="display:none;position:absolute;font-size:15px;width:45rem;height:40rem;border:solid black 2px;bottom:50px;left:40%;">
             <div class="container-fluid">    
@@ -204,7 +143,7 @@ socket.on("all users", function(users) {
                         alt="Send"></i>Send</button>
                      <input id="${users[i]}-input" class="form-control pull-right" style="width:80%;height:auto" style="font-size:15px;" autocomplete="off" placeholder="Type a message" />
             </div>
-            </div><br>
+            </div></div><br>
         `);
 
         $(document).on("click", "#" + users[i], function() {
@@ -268,7 +207,7 @@ $("#search").on("keyup", function() {
     console.log("key up");
     // let input=$('#search').val().toUpperCase();
     var value = $(this).val().toLowerCase();
-    $(".conversation").filter(function() {
+    $(".divContainer").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
 });

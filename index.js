@@ -31,23 +31,25 @@ io.on("connection", function(socket) {
         console.log(activeUsers + "hey");
         io.emit("all users", activeUsers);
         // console.log("kini siya niapil"+nickname)
-        // socket.broadcast.emit("user connected",nickname);
+        socket.broadcast.emit("user connected",nickname);
         console.log("user" + activeUsers);
         return;
     });
 
     socket.on("disconnect", () => {
         // console.log(socket.nickname)
-        var i = activeUsers.indexOf(socket.nickname);
-        console.log(i + "t");
-        console.log(socket.nickname + "left oi");
-        socket.broadcast.emit("user disconnected", socket.nickname);
-        console.log(activeUsers);
-        if (i != -1) {
-            activeUsers.splice(i, 1);
+        if(socket.nickname!=null){
+            var i = activeUsers.indexOf(socket.nickname);
+            console.log(i + "t");
+            console.log(socket.nickname + "left oi");
+            socket.broadcast.emit("user disconnected", socket.nickname);
+            console.log(activeUsers);
+            if (i != -1) {
+                activeUsers.splice(i, 1);
+            }
+            // activeUsers.splice(i, 1);
+            console.log(activeUsers);
         }
-        // activeUsers.splice(i, 1);
-        console.log(activeUsers);
     });
 
     socket.on("user disconnected", data => {
