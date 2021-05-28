@@ -100,24 +100,51 @@
 
 
             <form id="chat-form" class="form">
-                <button style="border:none;"><i class="fa fa-send-o" style="font-size:30px;margin-right:50px"
-                        alt="Send"></i>Send</button>
-                <input id="input" autocomplete="off" placeholder="Type a message" />
-                <input type="button" class="btn p-1 emoji" value="🤣" style="position:absolute; bottom:5px;right:60%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="❤️" style="position:absolute; bottom:5px;right:55%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="🙂" style="position:absolute; bottom:5px;right:50%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="👍" style="position:absolute; bottom:5px;right:45%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="👎" style="position:absolute; bottom:5px;right:40%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="🥰" style="position:absolute; bottom:5px;right:35%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="😡" style="position:absolute; bottom:5px;right:30%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="😭" style="position:absolute; bottom:5px;right:25%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="😍" style="position:absolute; bottom:5px;right:20%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="🤔" style="position:absolute; bottom:5px;right:15%; height:fit-content;">
-                <input type="button" class="btn p-1 emoji" value="💕" style="position:absolute; bottom:5px;right:10%; height:fit-content;">
+               
+                <button type = "submit" class="pull-left send"style="border:none; width:fit-content;height:auto"><i class="fa fa-send-o" style="font-size:20px;margin-right:20px"
+                        alt="Send">&nbsp;&nbsp;Send</i></button>
+                <input class="form-control pull-right " id="input" autocomplete="off" placeholder="Type a message" style="width:70%;height:40px" style="font-size:15px;"/> 
+                <button id="emoticon" type = "button" class="pull-right " style = "border:none;background-color:none;border-radius:60%">🙂</button>
+            <div class="emoteContainer">
+                <input type="button" class="btn p-1 emoji" value="🤣" >
+                <input type="button" class="btn p-1 emoji" value="❤️" >
+                <input type="button" class="btn p-1 emoji" value="🙂" >
+                <input type="button" class="btn p-1 emoji" value="👍" >
+                <input type="button" class="btn p-1 emoji" value="👎" >
+                <input type="button" class="btn p-1 emoji" value="🥰" >
+                <input type="button" class="btn p-1 emoji" value="😡" >
+                <input type="button" class="btn p-1 emoji" value="😭" >
+                <input type="button" class="btn p-1 emoji" value="😍" >
+                <input type="button" class="btn p-1 emoji" value="🤔" >
+                <input type="button" class="btn p-1 emoji" value="💕" >
+                <input type="button" class="btn p-1 emoji" value="😇" >
+                <input type="button" class="btn p-1 emoji" value="💔" >
+                <input type="button" class="btn p-1 emoji" value="🙏" >
+                <input type="button" class="btn p-1 emoji" value="👋" >
+                <input type="button" class="btn p-1 emoji" value="😴" >
+                <input type="button" class="btn p-1 emoji" value="🤒" >
+            </div>
             </form>
 
         </div>
-
+        <div class="container w-50 emojiContainer">
+            <input type="button" class="btn p-1 emoji2" value="🤣" >
+            <input type="button" class="btn p-1 emoji2" value="❤️" >
+            <input type="button" class="btn p-1 emoji2" value="🙂" >
+            <input type="button" class="btn p-1 emoji2" value="👍" >
+            <input type="button" class="btn p-1 emoji2" value="👎" >
+            <input type="button" class="btn p-1 emoji2" value="🥰" >
+            <input type="button" class="btn p-1 emoji2" value="😡" >
+            <input type="button" class="btn p-1 emoji2" value="😭" >
+            <input type="button" class="btn p-1 emoji2" value="😍" >
+            <input type="button" class="btn p-1 emoji2" value="🤔" >
+            <input type="button" class="btn p-1 emoji2" value="💕" >
+            <input type="button" class="btn p-1 emoji2" value="😇" >
+            <input type="button" class="btn p-1 emoji2" value="💔" >
+            <input type="button" class="btn p-1 emoji2" value="🙏" >
+            <input type="button" class="btn p-1 emoji2" value="👋" >
+            <input type="button" class="btn p-1 emoji2" value="😴" >
+            <input type="button" class="btn p-1 emoji2" value="🤒" ></div>
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
