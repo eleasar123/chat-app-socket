@@ -1,12 +1,13 @@
 {
-  "name": "basicChatApp",
+  "name": "chat-app-socket",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "app":"nodemon index.js",
+    "start": "node index.js",
+    "app": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,5 +17,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eleasar123/chat-app-socket.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eleasar123/chat-app-socket/issues"
+  },
+  "homepage": "https://github.com/eleasar123/chat-app-socket#readme",
+  "description": ""
 }
