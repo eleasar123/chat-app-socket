@@ -54,6 +54,7 @@ $("#back").click(function() {
 
 
 form.addEventListener("submit", function(e) {
+    socket.emit("stopped typing", nickname)
     e.preventDefault();
     if (input.value) {
         console.log(nickname + input.value);
@@ -72,7 +73,7 @@ form.addEventListener("submit", function(e) {
     }
 });
 
-input.addEventListener("keydown", () => {
+input.addEventListener("keyup", () => {
     console.log(nickname);
     socket.emit("typing", {
         isTyping: input.value.length > 0,
@@ -80,14 +81,14 @@ input.addEventListener("keydown", () => {
     });
 });
 
-input.addEventListener("keyup", () => {
-    console.log(nickname);
-    setTimeout(function() { socket.emit("stopped typing", {
-        isTyping: input.value.length <= 0,
-        nick: nickname
-    });},100)
+// input.addEventListener("keyup", () => {
+//     console.log(nickname);
+//     setTimeout(function() { socket.emit("stopped typing", {
+//         isTyping: input.value.length <= 0,
+//         nick: nickname
+//     });},100)
    
-});
+// });
 
 socket.on("user connected", nickname => {
         console.log(nickname+"joined");
@@ -104,27 +105,22 @@ socket.on("user disconnected", function(nickname) {
 });
 
 socket.on("typing", function(typing, user) {
-    setInterval(function(){ if(typing){
+   if(typing==true){
         
         $("#typing").html(user+ " is typing");
-        }}, 200);
+        }
     
 });
 
 socket.on("stopped typing", function(data) {
-    
-    
-    setTimeout(function() {
-        if(data.isTyping){
-            $("#typing").html(data.nick + " stopped typing");
-        };
-    }, 100);
+
+    $("#typing").html(data + " stopped typing");
 
     setTimeout(function() {
-        if(data.isTyping){
+        
             $("#typing").html("");
-        };
-    }, 1000);
+
+    }, 200);
 });
 
 socket.on("chat message", function(nickname, data) {
