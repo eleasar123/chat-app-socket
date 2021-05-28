@@ -23,7 +23,10 @@ $(".joinChat").click(function() {
         alert("Nickname taken try another one!")
     }else {
     console.log(nickname);
-
+    let patt1 = /\W/g;
+    if(nickname.match(patt1)){
+        alert("Do not include special characters in your nickname!")
+    }else{
         if (nickname != "") {
             socket.emit("user connected", nickname);
             // socket.emit("new user", nickname);
@@ -39,6 +42,7 @@ $(".joinChat").click(function() {
             // $(this).parent().siblings('.nicknameDiv').children('#nickname').val("Enter a nickname")
             $("#nickname").attr("placeholder", "Enter a nickname");
         }
+    }
     }
 });
 
